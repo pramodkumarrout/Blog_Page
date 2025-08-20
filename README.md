@@ -1,153 +1,50 @@
-STEP:1
-1. create a http module in node.js
-const http = require('http');
+# Node.js Crash Course - Blog Page
 
-4. Read the file using file system module
-const fs = require('fs');
+This project is a simple blog-style web application created as part of a Node.js crash course. It serves as a practical example of building a server-side application using Node.js and the Express framework, with EJS for templating.
 
-// using lodash module
-const _ = require('lodash');
+Based on the remote repository, this project is also known as "Blog_Page".
 
+## Features
 
+*   Dynamic routing for different pages (e.g., Home, About).
+*   Server-side rendering of HTML using the EJS templating engine.
+*   Use of EJS partials to maintain reusable UI components like the header, navigation, and footer.
+*   Serves as a foundational project for learning backend web development with Node.js.
 
-2. Create a server
-const server = http.createServer( (req, res) => {
+## Technologies Used
 
-    // req made by client
-    console.log(req.url, req.method);
+*   **Runtime Environment**: [Node.js](https://nodejs.org/)
+*   **Framework**: [Express.js](https://expressjs.com/)
+*   **View Engine**: [EJS](https://ejs.co/)
 
-    // res made by server
+## Getting Started
 
-    // using setHeader to set the content type
-    res.setHeader('Content-Type', 'text/html');
-    // res.write('<h1> Hello World </h1>);
-    //rea.end();
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-    // step: 5
-    // page router
-    let path = './docs/';
-    switch(req.url) {
-        case '/':
-        path += 'index.html';
-        res.statusCode = 200;
-        break;
-        case '/about':
-        path += 'about.html';
-        res.statusCode = 200;
-        break;
+### Prerequisites
 
-        // Step: 6
-        // redirect pages 
-        case '/about-me':
-        res.statusCode = 301;
-        res.setHeader('location', '/about');
-        res.end();
-        break;
+Make sure you have [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm) installed on your system.
 
-        default:
-        path += '404.html';
-        res.statusCode = 404;
-        res.end();
-        break;
-    }
+### Installation
 
+1.  Clone the repository to your local machine:
+    ```sh
+    git clone https://github.com/pramodkumarrout/Blog_Page.git
+    ```
 
-    // step: 4 
+2.  Navigate into the project directory:
+    ```sh
+    cd node-crash-course
+    ```
 
-    // read the file 
-    fs.readFile(path, (err,data) => {
-        if(err) {
-            console.log(err);
-            res.end();
-        }
-        else
-        {
-            res.end(data);
-        }
-    })
+3.  Install the necessary npm packages. If a `package.json` file doesn't exist, you will need to create one (`npm init -y`) and install the dependencies:
+    ```sh
+    npm install express ejs
+    ```
 
+4.  Start the application (assuming the main server file is `app.js` or `server.js`):
+    ```sh
+    node app.js
+    ```
 
-
-})
-3. Start the server
-
-server.listen(3000, 'localhost', () => {
-    console.log('Server is running at port 3000');
-})
-
-
-STEP: 2
-install the nodemon package for restart the server automatically
-npm install -g nodemon 
-// run the server using nodemon
-nodemon server.js
-
-// cancel the nodemon server
-using ctrl + c
-
-STEP: 3
-initial the npm package manager
-npm init 
-
-
-STEP: 4
-install the lodash package for the use of lodash functions
-npm install lodash
-
-
-
-
-
-       // Using Express Framework to build 
-    
-
-STEP: 1
-
-Install the express framework package for the use of express functions
-npm install express
-
-
-STEP: 2
-Create a server
-const express = require('express');
-const app = express();
-
-STEP: 3
-Start the server
-server.listen(3000);
-
-STEP:4
-Add Routing and HTML
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-NOTE: 
-
-if you want to install any of the project in your vs code 
-you need to install the package manager
-npm install
-
-then it will run the project on your computer
-
-
-
-
-
+5.  Open your browser and visit `http://localhost:3000` (or the port configured in the application) to see it in action.
